@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import * as Location from "expo-location";
+import api from "../../../services/api";
+import { useNavigation } from "@react-navigation/native";
 
 import * as C from "./style";
 
 export default () => {
+  const navigation = useNavigation();
   const [location, setLocation] = useState<null | {
     latitude: number;
     longitude: number;
@@ -32,6 +35,14 @@ export default () => {
     <C.Container>
       <StatusBar style="light" backgroundColor="#000" />
       <C.Title>Uber</C.Title>
+      <C.LogoutButton
+        onPress={() => {
+          api.logout();
+          navigation.navigate("Login" as never);
+        }}
+      >
+        <C.LogoutText>Logout</C.LogoutText>
+      </C.LogoutButton>
     </C.Container>
   );
 };
