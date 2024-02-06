@@ -8,9 +8,6 @@ export const Container = styled.SafeAreaView`
   padding: 0 32px;
 `;
 
-export const Title = styled.Text`
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 24px;
-  color: #000;
+export const Loading = styled.ActivityIndicator`
+  margin-top: 16px;
 `;
