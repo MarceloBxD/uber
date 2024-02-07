@@ -12,6 +12,7 @@ import MapViewDirections from "react-native-maps-directions";
 import { GOOGLE_MAPS_APIKEY } from "../../config";
 import Geocoder from "react-native-geocoding";
 import { View } from "react-native";
+import RequestModal from "../../components/RequestModal";
 
 export default () => {
   const navigation = useNavigation();
@@ -26,6 +27,8 @@ export default () => {
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [fromLocationName, setFromLocationName] = useState<string>("");
   const [toLocationName, setToLocationName] = useState<string>("");
+  const [type, setType] = useState<"origin" | "destination" | null>(null);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [fromLocation, setFromLocation] = useState<{
     latitude: number;
     longitude: number;
@@ -137,7 +140,12 @@ export default () => {
       </MapView>
 
       <C.ItineraryArea>
-        <C.ItineraryItem>
+        <C.ItineraryItem
+          onPress={() => {
+            setShowModal(true);
+            setType("origin");
+          }}
+        >
           <>
             <C.ItineraryLabel>
               <C.ItineraryPoint color="#000" />
@@ -148,7 +156,12 @@ export default () => {
             </C.ItineraryValue>
           </>
         </C.ItineraryItem>
-        <C.ItineraryItem>
+        <C.ItineraryItem
+          onPress={() => {
+            setShowModal(true);
+            setType("destination");
+          }}
+        >
           <>
             <C.ItineraryLabel>
               <C.ItineraryPoint color="#000" />
@@ -160,6 +173,13 @@ export default () => {
           </>
         </C.ItineraryItem>
       </C.ItineraryArea>
+      {showModal && (
+        <RequestModal
+          setShowModal={setShowModal}
+          type={type}
+          visible={showModal}
+        />
+      )}
     </C.Container>
   );
 };
