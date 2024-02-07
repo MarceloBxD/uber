@@ -1,35 +1,25 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
-import Preload from "../Preload";
 import Home from "../Home";
-import Login from "../Login";
+import CustomDrawer from "./CustomDrawer";
+import Profile from "./Profile";
+import Settings from "./Settings";
 
 const Drawer = createDrawerNavigator();
 
 export default function DrawerStack() {
   return (
-    <Drawer.Navigator initialRouteName="Preload">
-      <Drawer.Screen
-        name="Preload"
-        component={Preload}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Drawer.Screen
-        name="Login"
-        component={Login}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Drawer.Screen
-        name="Home"
-        component={Home}
-        options={{
-          headerShown: false,
-        }}
-      />
+    <Drawer.Navigator
+      screenOptions={{
+        headerTransparent: true,
+        headerTitle: "",
+      }}
+      drawerContent={(props) => <CustomDrawer {...props} />}
+      initialRouteName="Home"
+    >
+      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Profile" component={Profile} />
+      <Drawer.Screen name="Settings" component={Settings} />
     </Drawer.Navigator>
   );
 }

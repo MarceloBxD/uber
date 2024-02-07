@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import * as Location from "expo-location";
-import api from "../../../services/api";
 import { useNavigation } from "@react-navigation/native";
 
 import * as C from "./style";
+
+import MapView from "react-native-maps";
+import { PROVIDER_GOOGLE } from "react-native-maps";
 
 export default () => {
   const navigation = useNavigation();
@@ -34,15 +36,23 @@ export default () => {
   return (
     <C.Container>
       <StatusBar style="light" backgroundColor="#000" />
-      <C.Title>Uber</C.Title>
-      <C.LogoutButton
-        onPress={() => {
-          api.logout();
-          navigation.navigate("Login" as never);
+      <MapView
+        style={{
+          width: "100%",
+          height: "100%",
         }}
-      >
-        <C.LogoutText>Logout</C.LogoutText>
-      </C.LogoutButton>
+        camera={{
+          center: {
+            latitude: latitude || -23.5505,
+            longitude: longitude || -46.6333,
+          },
+          pitch: 0,
+          heading: 0,
+          altitude: 0,
+          zoom: 16,
+        }}
+        provider={PROVIDER_GOOGLE}
+      />
     </C.Container>
   );
 };

@@ -6,6 +6,7 @@ import api from "../../../services/api";
 export default () => {
   const navigation = useNavigation();
   const [formType, setFormType] = useState<"login" | "register">("login");
+  const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -37,6 +38,15 @@ export default () => {
   return (
     <S.Container>
       <S.Title>{formType === "login" ? "Login" : "Register"}</S.Title>
+      {formType === "register" && (
+        <S.Field
+          value={name}
+          onChangeText={(t: string) => setName(t)}
+          selectionColor="#000"
+          placeholder="Nome"
+          autoCapitalize="none"
+        />
+      )}
       <S.Field
         value={email}
         onChangeText={(t: string) => setEmail(t)}
