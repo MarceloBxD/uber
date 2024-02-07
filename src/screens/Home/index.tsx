@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { StatusBar } from "expo-status-bar";
 import * as Location from "expo-location";
 import { useNavigation } from "@react-navigation/native";
-
 import * as C from "./style";
 
 import MapView from "react-native-maps";
@@ -11,7 +10,6 @@ import { PROVIDER_GOOGLE } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 import { GOOGLE_MAPS_APIKEY } from "../../config";
 import Geocoder from "react-native-geocoding";
-import { View } from "react-native";
 import RequestModal from "../../components/RequestModal";
 
 export default () => {
@@ -27,7 +25,7 @@ export default () => {
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [fromLocationName, setFromLocationName] = useState<string>("");
   const [toLocationName, setToLocationName] = useState<string>("");
-  const [type, setType] = useState<"origin" | "destination" | null>(null);
+  const [type, setType] = useState<"origin" | "destination">("origin");
   const [showModal, setShowModal] = useState<boolean>(false);
   const [fromLocation, setFromLocation] = useState<{
     latitude: number;
@@ -141,6 +139,7 @@ export default () => {
 
       <C.ItineraryArea>
         <C.ItineraryItem
+          underlayColor="#EEE"
           onPress={() => {
             setShowModal(true);
             setType("origin");
@@ -148,7 +147,7 @@ export default () => {
         >
           <>
             <C.ItineraryLabel>
-              <C.ItineraryPoint color="#000" />
+              <C.ItineraryPoint color="#bbb" />
               <C.ItineraryTitle>Origem</C.ItineraryTitle>
             </C.ItineraryLabel>
             <C.ItineraryValue>
@@ -157,6 +156,7 @@ export default () => {
           </>
         </C.ItineraryItem>
         <C.ItineraryItem
+          underlayColor="#EEE"
           onPress={() => {
             setShowModal(true);
             setType("destination");
@@ -164,7 +164,7 @@ export default () => {
         >
           <>
             <C.ItineraryLabel>
-              <C.ItineraryPoint color="#000" />
+              <C.ItineraryPoint color="#bbb" />
               <C.ItineraryTitle>Destino</C.ItineraryTitle>
             </C.ItineraryLabel>
             <C.ItineraryValue>

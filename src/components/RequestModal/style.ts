@@ -21,3 +21,35 @@ export const Title = styled.Text`
   margin-bottom: 24px;
   color: #000;
 `;
+
+export const MainContent = styled.View`
+  flex: 1;
+  background-color: #fff;
+  padding: 24px;
+`;
+
+export const InputArea = styled.View`
+  margin-top: 12px;
+`;
+
+export const Input = styled.TextInput`
+  border-bottom: #000;
+  border-bottom-width: 1px;
+  border-color: #000;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px;
+`;
+
+export const LocationList = styled.ScrollView`
+  margin-top: 12px;
+`;
+
+export const LocationItem = styled.TouchableOpacity`
+  padding: 12px;
+`;
+
+export const LocationText = styled.Text`
+  font-size: 16px;
+  color: #000;
+`;

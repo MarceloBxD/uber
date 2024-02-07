@@ -26,21 +26,21 @@ import {
 
 const CustomDrawer = (props: any) => {
   const navigation = useNavigation();
-  const width = useWindowDimensions().width * 0.75; // Ajustei o tamanho para ficar mais visível
+  const width = useWindowDimensions().width * 0.75;
 
   const drawerData = [
     {
-      icon: <MaterialIcons name="home" size={24} color="#fff" />,
+      icon: <MaterialIcons name="home" size={24} color="#000" />,
       label: "Home",
       component: Home,
     },
     {
-      icon: <FontAwesome name="user" size={24} color="#fff" />,
+      icon: <FontAwesome name="user" size={24} color="#000" />,
       label: "Profile",
       component: Profile,
     },
     {
-      icon: <Entypo name="cog" size={24} color="#fff" />,
+      icon: <Entypo name="cog" size={24} color="#000" />,
       label: "Settings",
       component: Settings,
     },
@@ -72,8 +72,6 @@ const CustomDrawer = (props: any) => {
           padding: 16,
           flexDirection: "row",
           justifyContent: "space-between",
-          borderBottomColor: "#000",
-          borderBottomWidth: 1,
         }}
       >
         <Text style={styles.logoutText}>Logout</Text>
@@ -86,29 +84,28 @@ const CustomDrawer = (props: any) => {
 const styles = StyleSheet.create({
   drawerContainer: {
     flex: 1,
-    backgroundColor: "#000",
     paddingTop: 20,
   },
   headerContainer: {
     padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: "#fff",
+    borderBottomColor: "#ddd",
   },
   drawerTitle: {
-    color: "#fff",
+    color: "#000",
     fontSize: 20,
     fontWeight: "bold",
   },
   drawerItem: {
     padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: "#fff",
+    borderBottomColor: "#ddd",
     flexDirection: "row",
     alignItems: "center",
     gap: 16,
   },
   drawerItemText: {
-    color: "#fff",
+    color: "#000",
     fontSize: 16,
   },
   logoutText: {

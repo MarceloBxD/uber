@@ -25,7 +25,7 @@ export default () => {
   return (
     <C.Container>
       <C.Title>Uber</C.Title>
-      <C.Loading size="large" color="#000" />
+      <C.Loading size="large" color="#FFF" />
     </C.Container>
   );
 };

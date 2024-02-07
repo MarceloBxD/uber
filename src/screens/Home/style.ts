@@ -47,6 +47,6 @@ export const ItineraryTitle = styled.Text`
 `;
 export const ItineraryValue = styled.Text`
   font-size: 16px;
-  color: #000;
+  color: #777;
   text-align: center;
 `;
